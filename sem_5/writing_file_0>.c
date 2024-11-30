@@ -23,11 +23,11 @@ int main (){
     if(read(fd, buf, lenth_of_reading) < lenth_of_reading){
 
         printf("ERROR: <My_file> was't entirely read!\n");
-        exit(-1);
+        //exit(-1);
     }
 
 
-    if(write(standard_IO_stream, buf, sizeof(buf)) != sizeof(buf)){
+    if(write(standard_IO_stream, buf, sizeof(buf)) != /*!!*/ sizeof(buf)){ //size of buf could be less, than expected lenth of the file
 
         printf("ERROR: standart stream denied outing!\n");
         exit(-1);

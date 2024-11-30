@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include <sys/types.h> // size_t/pid_t
+#include <sys/types.h> // size_t, pid_t
 
 #include <fcntl.h>      //open
 #include <sys/stat.h>   //umask
-#include <unistd.h>     //read/write/close
+#include <unistd.h>     //read, write, close
 #include <stdlib.h>     //exit
 
 int main (){
@@ -21,8 +21,8 @@ int main (){
 
     if(write(fd, str, sizeof(str)) != sizeof(str)){
 
-        printf("ERROR: <My_file> wasn't entirely updated by str\n!");
-        exit(-1);
+        printf("ERROR: <My_file> wasn't entirely updated by str!\n");
+        // exit(-1);
     }
 
     printf("fd = %d\n", fd);

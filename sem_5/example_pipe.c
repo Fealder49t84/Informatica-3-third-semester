@@ -4,7 +4,7 @@
 #include <sys/stat.h>   //umask
 #include <fcntl.h>      //open
 #include <unistd.h>     //write, read, pipe
-#include <stdlib.h>     //exit
+#include <stdlib.h>     //exit, sizeof
 
 const char str [] = "Hello, World!";
 const unsigned int lenth_str = sizeof(str);
@@ -19,14 +19,16 @@ int main (){
         printf("ERROR: pipe wasn\'t correctrly created!\n");
         exit(-1);
     }
-printf("fd1 = %d, fd2 = %d\n", fd[1], fd[2]);
-    if(write(fd[0], str, lenth_str) != lenth_str){
+
+    printf("fd_rd = %d, fd_wr = %d\n", fd[0], fd[1]);
+
+    if(write(fd[1], str, lenth_str) != lenth_str){
 
         printf("ERROR: string wasn\'t completely written into pipe_in!\n");
         // exit(-1);
     }
 
-    if(read(fd[1], resstr, lenth_str) != lenth_str){
+    if(read(fd[0], resstr, lenth_str) != lenth_str){
 
         printf("ERROR: str wasn\'t completely read from pipe_out!\n");
         // exit(-1);
@@ -44,7 +46,7 @@ printf("fd1 = %d, fd2 = %d\n", fd[1], fd[2]);
         exit(-1);
     }
 
-    printf("%s", resstr);
+    printf("ANSWER: %s\n", resstr);
 
     return 0;
 }
