@@ -3,6 +3,7 @@
 
 #include <fcntl.h>      //open
 #include <sys/stat.h>   //umask
+
 #include <unistd.h>     //read/write/close
 #include <stdlib.h>     //exit
 
@@ -22,7 +23,7 @@ int main (){
 
     if(read(fd, buf, lenth_of_reading) < lenth_of_reading){
 
-        printf("ERROR: <My_file> was't entirely read!\n");
+        printf("Warning: <My_file> was't entirely read!\n");
         //exit(-1);
     }
 
